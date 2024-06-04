@@ -1,17 +1,17 @@
 ﻿@model AllPitchesViewModel
 
 @{
-    ViewBag.Title = "All Pitches";
+    ViewBag.Title = "My Pitches";
 }
 
 <h2 class="text-center">@ViewBag.Title</h2>
 <hr />
 
 <div class="text-center row">
-    @foreach (var pitch in Model.Pitches)
+    @foreach(var pitch in Model.Pitches)
     {
-        <div class="card col 4" style="width: 20 rem;">
-            <img class="card-img-top" src="@pitch.ImageUrl" alt="House Image">
+        <div class="card col-6">
+            <img class="card-img-top" src="@pitch.ImageUrl" alt="Pitch Image">
             <div class="card-body">
                 <h5 class="card-title">@pitch.Title</h5>
                 <p class="card-text">@pitch.Address</p>
@@ -19,4 +19,3 @@
         </div>
     }
 </div>
-
