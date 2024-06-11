@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34902.65
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PitchRentingSystem.Web", "PitchRentingSystem.Web.csproj", "{F968FA2B-4D78-4B86-B608-61FF6B122973}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PitchRentingSystem.Web", "PitchRentingSystem.Web.csproj", "{F968FA2B-4D78-4B86-B608-61FF6B122973}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PitchRentingData", "..\RentAPitch.Data\PitchRentingData.csproj", "{BDD01C51-B451-4A35-A68F-495047F7A6B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PitchRenting.Data.Model", "..\RentAPitch.Data.Model\PitchRenting.Data.Model.csproj", "{A0125330-1372-4010-B2F7-AB9EC5D4F340}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PitchRenting.UnitTest", "..\PitchRenting.UnitTest\PitchRenting.UnitTest.csproj", "{2E138025-9961-4099-A510-E06AD2705006}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{F968FA2B-4D78-4B86-B608-61FF6B122973}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F968FA2B-4D78-4B86-B608-61FF6B122973}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F968FA2B-4D78-4B86-B608-61FF6B122973}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDD01C51-B451-4A35-A68F-495047F7A6B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDD01C51-B451-4A35-A68F-495047F7A6B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDD01C51-B451-4A35-A68F-495047F7A6B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDD01C51-B451-4A35-A68F-495047F7A6B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0125330-1372-4010-B2F7-AB9EC5D4F340}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0125330-1372-4010-B2F7-AB9EC5D4F340}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0125330-1372-4010-B2F7-AB9EC5D4F340}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0125330-1372-4010-B2F7-AB9EC5D4F340}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E138025-9961-4099-A510-E06AD2705006}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E138025-9961-4099-A510-E06AD2705006}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E138025-9961-4099-A510-E06AD2705006}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E138025-9961-4099-A510-E06AD2705006}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

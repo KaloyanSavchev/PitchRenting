@@ -1,4 +1,6 @@
-﻿namespace PitchRentingSystem.Web.Models.Home
+﻿using PitchRentingSystem.Web.Models.Pitches;
+
+namespace PitchRentingSystem.Web.Models.Home
 {
     public class IndexViewModel
     {

@@ -2,6 +2,7 @@
 using PitchRentingSystem.Web.Data;
 using PitchRentingSystem.Web.Models;
 using PitchRentingSystem.Web.Models.Home;
+using PitchRentingSystem.Web.Models.Pitches;
 using System.Diagnostics;
 
 namespace PitchRentingSystem.Web.Controllers
@@ -14,24 +15,38 @@ namespace PitchRentingSystem.Web.Controllers
             => this.data = data;
 
         public IActionResult Index()
-        {
-            var allPitches = new IndexViewModel()
+        {           
+            var totalPitches = this.data.Pitches.Count();
+            var totalRents = this.data.Pitches.Where(p => p.RenterId != null).Count();
+
+            var pitches = this.data.Pitches.OrderByDescending(c => c.Id).Select(c => new PitchIndexViewModel
             {
-                TotalPitches = this.data.Pitches.Count(),
-                TotalRents = this.data.Pitches.Where(p => p.RenterId != null).Count(),
-                Pitches = this.data.Pitches.Select(h => new PitchIndexViewModel()
-                {
-                    Title= h.Title,
-                    ImageUrl = h.ImageUrl
-                })               
-            };
-            return View(allPitches);
+                Id = c.Id,
+                Title = c.Title,
+                ImageUrl = c.ImageUrl,
+            }).Take(3).ToList();
+
+            return View(new IndexViewModel
+            {
+                TotalPitches = totalPitches,
+                TotalRents = totalRents,
+                Pitches = pitches
+            });
         }
          
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+      
+        public IActionResult Error(int statusCode)
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            if (statusCode == 400 || statusCode == 404)
+            {
+                return View("Error400");
+            }
+            if (statusCode == 401)
+            {
+                return View("Error401");
+            }
+            return View();
         }
     }
 }

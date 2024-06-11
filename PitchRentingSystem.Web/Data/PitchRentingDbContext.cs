@@ -6,7 +6,7 @@ using PitchRentingSystem.Web.Data.Entities;
 
 namespace PitchRentingSystem.Web.Data
 {
-    public class PitchRentingDbContext : IdentityDbContext
+    public class PitchRentingDbContext : IdentityDbContext<IdentityUser>
     {
         public PitchRentingDbContext(DbContextOptions<PitchRentingDbContext> options)
             : base(options)
@@ -20,7 +20,7 @@ namespace PitchRentingSystem.Web.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.ApplyConfiguration(new AgentConfiguration());
-            builder.ApplyConfiguration(new IdentityUserConfiguration());
+            builder.ApplyConfiguration(new UserConfiguration());
             builder.ApplyConfiguration(new CategoryConfiguration());
             builder.ApplyConfiguration(new PitchConfiguration());
             

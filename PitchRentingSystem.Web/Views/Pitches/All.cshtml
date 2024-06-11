@@ -1,4 +1,4 @@
-﻿@model AllPitchesViewModel
+﻿@model AllPitchesQueryModel
 
 @{
     ViewBag.Title = "All Pitches";
@@ -7,16 +7,81 @@
 <h2 class="text-center">@ViewBag.Title</h2>
 <hr />
 
-<div class="text-center row">
+
+<div class="text-center row" style="width: 20 rem;">
+    @if (!Model.Pitches.Any())
+    {
+        <h2 class="text-center">No pitches found !</h2>
+    }
     @foreach (var pitch in Model.Pitches)
     {
         <div class="card col 4" style="width: 20 rem;">
-            <img class="card-img-top" src="@pitch.ImageUrl" alt="House Image">
+            <img class="card-img-top" src="@pitch.ImageUrl" alt="House Image" height="400" width="400">
             <div class="card-body">
                 <h5 class="card-title">@pitch.Title</h5>
                 <p class="card-text">@pitch.Address</p>
             </div>
+           
         </div>
+        
+            <div class="car-mb-3">               
+                <div class="card-body text-center">                   
+                    <h6>
+                        Price Per Rent:
+                        <b>@String.Format("{0:f2}", pitch.PricePerRent) BGN</b>
+                    </h6>
+                <h6>(@(pitch.IsRented ? "Rented" : "Not Rented"))</h6>
+                    <br />
+                <a asp-controller="Pitches" asp-action="Details" asp-route-id="@pitch.Id" class="btn btn-success">Details</a>
+                    @if (this.User.Identity.IsAuthenticated)
+                    {
+                    <a asp-controller="Pitches" asp-action="Edit" asp-route-id="@pitch.Id" class="btn btn-warning">Edit</a>
+                    <a asp-controller="Pitches" asp-action="Delete" asp-route-id="@pitch.Id" class="btn btn-danger">Delete</a>
+                        <p></p>
+                    @if (!pitch.IsRented)
+                        {
+                        <form class="input-group-sm" asp-controller="Pitches" asp-action="Rent" asp-route-id="@pitch.Id" method="post">
+                                <input class="btn btn-primary" type="submit" value="Rent" />
+                            </form>
+                        }
+                        else
+                        {
+                        <form asp-controller="Pitches" asp-action="Leave" asp-route-id="@pitch.Id" method="post">
+                                <input class="btn btn-primary" type="submit" value="Leave" />
+                            </form>
+                        }
+                    }
+                @* @if (this.User.Identity.IsAuthenticated)
+                {
+                    <form method="get" asp-controller="Pitches" asp-action="Edit" asp-route-id="@pitch.Id" class="d-inline">
+                        <button type="submit" class="btn btn-warning">Edit</button>
+                    </form>
+                    <form method="get" asp-controller="Pitches" asp-action="Delete" asp-route-id="@pitch.Id" class="d-inline">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+
+                    <p></p>
+
+                    @if (!pitch.IsRented)
+                    {
+                        <form asp-controller="Pitches" asp-action="Rent" asp-route-id="@pitch.Id" method="post" class="d-inline">
+                            <button type="submit" class="btn btn-primary">Rent</button>
+                        </form>
+                    }
+                    else
+                    {
+                        <form asp-controller="Pitches" asp-action="Leave" asp-route-id="@pitch.Id" method="post" class="d-inline">
+                            <button type="submit" class="btn btn-primary">Leave</button>
+                        </form>
+                    }
+                } *@
+                </div>
+            </div>      
     }
 </div>
-
+ @* <div class="row">
+    @foreach (var pitch in Model.Pitches)
+    {
+        <partial name="_PitchPartial" model="@pitch" />
+    }
+</div>  *@

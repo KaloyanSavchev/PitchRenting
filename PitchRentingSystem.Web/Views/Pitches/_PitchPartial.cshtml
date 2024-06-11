@@ -1,0 +1,39 @@
+﻿@model PitchViewModel
+
+<div class="col-md-4">
+    <div class="car-mb-3">
+        < class="card col 4" style="width: 20 rem;">
+        <img class="card-img-top" src="@Model.ImageUrl" alt="Pitch Image">
+        <div class="card-body text-center">
+            <h4>@Model.Title</h4>
+            <h6>Address: <b>@Model.Address</b></h6>
+            <h6>
+                Price Per Rent:
+                <b>@String.Format("{0:f2}", Model.PricePerRent) BGN</b>
+            </h6>
+            <h6>(@(Model.IsRented ? "Rented" : "Not Rented"))</h6>
+         </div
+            <br />
+        <div class="car-mb-3">
+            <a asp-controller="Pitches" asp-action="Details" asp-route-id="@Model.Id" class="btn btn-success">Details</a>
+             @if (this.User.Identity.IsAuthenticated)
+            { 
+                <a asp-controller="Pitches" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Edit</a>
+                <a asp-controller="Pitches" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">Delete</a>
+                <p></p>
+                @if (!Model.IsRented)
+                {
+                   <form class="input-group-sm" asp-controller="Pitches" asp-action="Rent" asp-route-id="@Model.Id" method="post">
+                       <input class="btn btn-primary" type="submit" value="Rent" />
+                   </form> 
+                }
+                else
+                {
+                    <form asp-controller="Pitches" asp-action="Leave" asp-route-id="@Model.Id" method="post">
+                        <input class="btn btn-primary" type="submit" value="Leave" />
+                    </form>
+                }
+            } 
+        </div>
+    </div>
+</div>

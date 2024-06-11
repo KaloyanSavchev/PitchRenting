@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using PitchRentingSystem.Web.Data;
+using PitchRentingSystem.Web.Data.Entities;
 
 namespace PitchRentingSystem.Web
 {
@@ -41,7 +42,8 @@ namespace PitchRentingSystem.Web
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");        
+                app.UseExceptionHandler("/Home/Error/500");
+                app.UseStatusCodePagesWithRedirects("/Home/Error?statusCode{0}");
                 app.UseHsts();
             }
 

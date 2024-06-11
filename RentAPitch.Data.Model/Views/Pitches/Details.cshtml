@@ -1,0 +1,17 @@
+﻿@model PitchesDetailsViewModel
+
+@{
+    ViewBag.Title = "Pitch Details";
+}
+
+<h2 class="text-centerd">@ViewBag.Title</h2>
+<hr />
+
+<div class="card text-center mx-auto" style="width: 25rm;">
+    <img class="card-img-top" src="@Model.ImageUrl" alt="House Image">
+    <div class="card-body">
+        <h5 class="card-title">@Model.Title</h5>
+        <p class="card-text">@Model.Address</p>
+    </div>
+
+</div>
