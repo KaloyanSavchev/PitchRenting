@@ -29,7 +29,9 @@ namespace PitchRentingSystem.Web.Controllers
                     Id = h.Id,
                     Title = h.Title,
                     Address = h.Address,
-                    ImageUrl = h.ImageUrl
+                    ImageUrl = h.ImageUrl,
+                    IsRented = h.RenterId != null,
+                    PricePerRent = h.PricePerRent
                 })
             };
             return View(allPitches);
@@ -45,7 +47,7 @@ namespace PitchRentingSystem.Web.Controllers
                 return BadRequest();
             }
 
-            var pitchModel = new PitchViewModel()
+            var pitchModel = new PitchesDetailsViewModel()
             {
                 Title = pitch.Title,
                 Address = pitch.Address,
